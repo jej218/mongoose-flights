@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>Mongoose Flights</title>
+    <ul>
+        <li><a href="/flights" class="active">All Flights</a></li>
+        <li><a href="/flights/new">New Flight</a></li>
+    </ul>
+
+</head>
+
+<body>
+    <h1>Flight List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Airline</th>
+                <th>Airport Code</th>
+                <th>Flight Number</th>
+                <th>Departing Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% flights.forEach(f => { %>
+                <tr>
+                    <td>
+                        <%= f.airline %>
+                    </td>
+                    <td>
+                        <%= f.airport %>
+                    </td>
+                    <td>
+                        <%= f.flightNo %>
+                    </td>
+                    <td>
+                        <%= f.departs %>
+                    </td>
+                </tr>
+                <% }) %>
+        </tbody>
+    </table>
+</body>
+
+</html>
