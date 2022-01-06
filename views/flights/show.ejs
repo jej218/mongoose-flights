@@ -16,16 +16,58 @@
         <div>
             <%= flight.departs %>
         </div>
+        <div>Tickets: </div>
+        <div>
+            <table id='ticket-list'>
+                <thead>
+                    <tr>
+                        <th>Seat</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% tickets.forEach(function(t) { %>
+                        <tr>
+                            <td>
+                                <%= t.seat %>
+                            </td>
+                            <td>
+                                <%= t.price %>
+                            </td>
+                        </tr>
+                        <% }); %>
+                </tbody>
+            </table>
+        </div>
         <div>Destinations: </div>
         <div>
-            <%= flight.arrivals %>
+            <table id='destination-list'>
+                <thead>
+                    <tr>
+                        <th>Airport</th>
+                        <th>Arrival Date/Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% flight.destinations.forEach(function(d) { %>
+                        <tr>
+                            <td>
+                                <%= d.airport %>
+                            </td>
+                            <td>
+                                <%= d.arrival %>
+                            </td>
+                        </tr>
+                        <% }); %>
+                </tbody>
+            </table>
         </div>
     </section>
-    <br><br>
+    <br>
     <h2>Add Destination</h2>
     <form id="add-destination-form" method="POST" action="/flights/<%= flight._id %>/destinations">
         <label>Airport:</label>
-        <select name='airport' id='airport-select' form='new-form'>
+        <select name='airport' id='airport-select' form='add-destination-form'>
             <option value='ATL'>ATL</option>
             <option value='DFW'>DFW</option>
             <option value='DEN'>DEN</option>
@@ -36,4 +78,6 @@
         <input type="datetime-local" name='arrival'>
         <input type='submit' value="Add Destination">
     </form>
+    <br>
+    <a href='/flights/<%= flight._id %>/tickets/new'>Add Ticket</a>
     <%- include('../partials/footer') %>
